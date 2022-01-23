@@ -1,0 +1,3 @@
+<p>{{ this.word }}</p>
+<input [(ngModel)]="guessedWord" (change)="this.guessedWordChange.emit(this.guessedWord)" />
+<div>{{ guessedWord }}</div>

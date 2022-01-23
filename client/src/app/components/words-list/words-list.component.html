@@ -1,0 +1,6 @@
+<p>words-list works!</p>
+<div *ngFor="let word of words">
+    <app-word-card [word]="word.originalWord" [(guessedWord)]="this.guessedWordParent"></app-word-card>
+</div>
+<button mat-button (click)="this.correctWords()">Grade</button>
+<p *ngIf="this.score !== undefined">{{ this.score }}</p>
