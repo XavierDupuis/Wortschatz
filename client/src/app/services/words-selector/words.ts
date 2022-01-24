@@ -1,4 +1,4 @@
-import { Theme } from '@app/components/theme-selector/theme-selector/themes';
+import { Theme } from '@app/components/selectors/theme-selector/themes';
 
 export interface Word {
     en: string;
@@ -29,7 +29,7 @@ export const words: Word[] = [
     {
         en: 'sweet',
         fr: 'sucré',
-        de: 'süßü',
+        de: 'süß',
         themes: [Theme.Adjectives, Theme.Food],
     },
 ];

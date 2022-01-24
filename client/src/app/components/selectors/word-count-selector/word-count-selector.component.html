@@ -1,0 +1,9 @@
+<mat-slider
+    (input)="numberOfWords = $event.value ? $event.value : 0"
+    [value]="numberOfWords"
+    [min]="minNumberOfWords"
+    [max]="maxNumberOfWords"
+></mat-slider>
+<input type="number" [(ngModel)]="numberOfWords" [min]="minNumberOfWords" [max]="maxNumberOfWords" />
+<p>words</p>
+<button mat-button (click)="this.generateWords()">Generate</button>

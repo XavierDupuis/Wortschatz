@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
-import { Language } from '@app/components/language-selector/languages';
+import { Language } from '@app/components/selectors/language-selector/languages';
 import { WordTarget } from '@app/components/word.interface';
 import { Word, words } from '@app/services/words-selector/words';
+import { getRandomInt } from '@app/utils';
 import { Subject } from 'rxjs/internal/Subject';
 
 @Injectable({
@@ -11,21 +12,36 @@ export class WordsSelectorService {
     originLanguage: Language = Language.Fr;
     targetLanguage: Language = Language.De;
     selectedWords: WordTarget[] = [];
+    availableWordsIndex: number[] = [];
 
     newWordsGeneratedSubject = new Subject();
     get $newWordsGenerated() {
         return this.newWordsGeneratedSubject.asObservable();
     }
 
-    constructor() {
-        // this.generateWords();
+    // constructor() {
+    //     this.init();
+    // }
+
+    init() {
+        this.selectedWords = [];
+        this.availableWordsIndex = [];
+        for (let i = 0; i < words.length; i++) {
+            this.availableWordsIndex.push(i);
+        }
     }
 
-    generateWords() {
-        this.selectedWords = [];
-        for (const word of words) {
-            const originalWord = this.getWordFromLanguage(this.originLanguage, word);
-            const targetWord = this.getWordFromLanguage(this.targetLanguage, word);
+    generateWords(numberOfWords: number) {
+        this.init();
+        const numberOfWordsToGenerate = Math.min(words.length, numberOfWords);
+        for (let i = 0; i < numberOfWordsToGenerate; i++) {
+            const randomIndex = getRandomInt(this.availableWordsIndex.length);
+            const chosenIndex = this.availableWordsIndex[randomIndex];
+            this.availableWordsIndex.splice(randomIndex, 1);
+            const chosenWord = words[chosenIndex];
+            const originalWord = this.getWordFromLanguage(this.originLanguage, chosenWord);
+            const targetWord = this.getWordFromLanguage(this.targetLanguage, chosenWord);
+
             this.selectedWords.push({ originalWord, targetWord });
         }
         this.newWordsGeneratedSubject.next();

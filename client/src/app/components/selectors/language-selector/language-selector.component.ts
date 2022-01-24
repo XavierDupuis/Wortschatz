@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Language } from '@app/components/language-selector/languages';
+import { Language } from '@app/components/selectors/language-selector/languages';
 import { WordsSelectorService } from '@app/services/words-selector/words-selector.service';
 
 @Component({
