@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { WordGuess } from '@app/components/word-card/word.interface';
+import { WordGuess } from '@app/components/word.interface';
 
 @Component({
     selector: 'app-word-card',

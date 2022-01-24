@@ -1,9 +1,8 @@
-<p>words-list works!</p>
 <div *ngFor="let word of words">
     <app-word-card
         [originalWord]="word.originalWord"
         [targetWord]="this.graded ? word.targetWord : ''"
-        (guessedWordChange)="this.updateGuess($event)"
+        (guessedWordChange)="this.updateGuess(word, $event)"
     ></app-word-card>
 </div>
 <button mat-button (click)="this.correctWords()">Grade</button>

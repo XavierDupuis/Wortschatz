@@ -1,4 +1,4 @@
-export interface Word {
+export interface WordTarget {
     originalWord: string;
     targetWord: string;
 }

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Word, WordGuess } from '@app/components/word-card/word.interface';
+import { WordGuess, WordTarget } from '@app/components/word.interface';
 import { WordsSelectorService } from '@app/services/words-selector/words-selector.service';
 
 @Component({
@@ -10,17 +10,27 @@ import { WordsSelectorService } from '@app/services/words-selector/words-selecto
 export class WordsListComponent implements OnInit {
     score: number = 0;
     graded: boolean = false;
-    wordsGuessed: Map<Word, string> = new Map();
-    constructor(private wordSelector: WordsSelectorService) {}
+    wordsGuessed: Map<WordTarget, string> = new Map();
+
+    constructor(private wordsSelector: WordsSelectorService) {
+        this.wordsSelector.$newWordsGenerated.subscribe(() => {
+            this.reset();
+        });
+    }
+
+    reset() {
+        this.graded = false;
+        this.wordsGuessed = new Map();
+    }
+
+    get words(): WordTarget[] {
+        return this.wordsSelector.selectedWords;
+    }
 
     ngOnInit(): void {
         for (const word of this.words) {
             this.wordsGuessed.set(word, '');
         }
-    }
-
-    get words(): Word[] {
-        return this.wordSelector.words;
     }
 
     correctWords() {
@@ -33,15 +43,10 @@ export class WordsListComponent implements OnInit {
         this.graded = true;
     }
 
-    updateGuess(newGuess: WordGuess) {
+    updateGuess(word: WordTarget, newGuess: WordGuess) {
         if (this.graded) {
             return;
         }
-        for (const [word] of this.wordsGuessed) {
-            if (word.originalWord === newGuess.originalWord) {
-                this.wordsGuessed.set(word, newGuess.guessedWord);
-                return;
-            }
-        }
+        this.wordsGuessed.set(word, newGuess.guessedWord);
     }
 }
