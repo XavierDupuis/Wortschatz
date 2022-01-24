@@ -2,7 +2,6 @@
 /.vscode/chrome
 /.vs/
 
-package-lock.json
 .DS_Store
 
 # Code Coverage Folder
