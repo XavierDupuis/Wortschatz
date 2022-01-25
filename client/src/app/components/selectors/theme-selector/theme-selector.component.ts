@@ -18,14 +18,37 @@ export class ThemeSelectorComponent implements OnInit {
         return this.wordsSelector.selectedThemes;
     }
 
+    set selectedThemes(newSelectedThemes: Set<string>) {
+        this.wordsSelector.selectedThemes = newSelectedThemes;
+    }
+
     ngOnInit(): void {}
 
-    changeThemeStatus(theme: string) {
-        const isThemeActive = this.selectedThemes.has(theme);
-        if (isThemeActive) {
-            this.selectedThemes.delete(theme);
-        } else {
-            this.selectedThemes.add(theme);
+    toggleAllThemesStatus() {
+        if (this.areAllThemesSelected()) {
+            this.selectedThemes = new Set();
+            return;
         }
+        this.selectedThemes = new Set(this.themes);
+    }
+
+    areAllThemesSelected() {
+        return this.selectedThemes.size === this.themes.length;
+    }
+
+    areSomeStatusActive() {
+        return this.selectedThemes.size > 0 && this.selectedThemes.size < this.themes.length;
+    }
+
+    changeThemeStatus(theme: string) {
+        if (this.isThemeActive(theme)) {
+            this.selectedThemes.delete(theme);
+            return;
+        }
+        this.selectedThemes.add(theme);
+    }
+
+    isThemeActive(theme: string) {
+        return this.selectedThemes.has(theme);
     }
 }
