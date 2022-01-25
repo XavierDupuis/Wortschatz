@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Theme } from '@app/components/selectors/theme-selector/themes';
+import { WordsSelectorService } from '@app/services/words-selector/words-selector.service';
 
 @Component({
     selector: 'app-theme-selector',
@@ -11,16 +12,20 @@ export class ThemeSelectorComponent implements OnInit {
         return isNaN(Number(theme));
     });
 
-    selectedThemes = new Map<string, boolean>();
+    constructor(private wordsSelector: WordsSelectorService) {}
 
-    ngOnInit(): void {
-        for (const theme of this.themes) {
-            this.selectedThemes.set(theme, false);
-        }
+    get selectedThemes() {
+        return this.wordsSelector.selectedThemes;
     }
 
+    ngOnInit(): void {}
+
     changeThemeStatus(theme: string) {
-        const status = this.selectedThemes.get(theme);
-        this.selectedThemes.set(theme, !status);
+        const isThemeActive = this.selectedThemes.has(theme);
+        if (isThemeActive) {
+            this.selectedThemes.delete(theme);
+        } else {
+            this.selectedThemes.add(theme);
+        }
     }
 }
