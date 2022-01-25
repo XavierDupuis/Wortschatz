@@ -1,5 +1,9 @@
 :host {
     display: flex;
+    padding: 2%;
+    border: 2px solid gray;
+    flex-basis: 40%;
+    justify-content: space-between;
 }
 
 .correct {
@@ -8,4 +12,8 @@
 
 .incorrect {
     background-color: red;
+}
+
+p {
+    flex-basis: 20%;
 }

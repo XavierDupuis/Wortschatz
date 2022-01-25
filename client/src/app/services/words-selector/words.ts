@@ -1,4 +1,4 @@
-/* eslint-disablemax-lines*/
+/* eslint-disable max-lines*/
 import { Theme } from '@app/components/selectors/theme-selector/themes';
 
 export interface Word {

@@ -6,20 +6,20 @@ const DEFAULT_NUMBER_OF_WORDS = 20;
 const MAX_NUMBER_OF_WORDS = 100;
 
 @Component({
-  selector: 'app-word-count-selector',
-  templateUrl: './word-count-selector.component.html',
-  styleUrls: ['./word-count-selector.component.scss'],
+    selector: 'app-word-count-selector',
+    templateUrl: './word-count-selector.component.html',
+    styleUrls: ['./word-count-selector.component.scss'],
 })
 export class WordCountSelectorComponent implements OnInit {
-  minNumberOfWords = MIN_NUMBER_OF_WORDS;
-  maxNumberOfWords = MAX_NUMBER_OF_WORDS;
-  numberOfWords: number = DEFAULT_NUMBER_OF_WORDS;
+    minNumberOfWords = MIN_NUMBER_OF_WORDS;
+    maxNumberOfWords = MAX_NUMBER_OF_WORDS;
+    numberOfWords: number = DEFAULT_NUMBER_OF_WORDS;
 
-  constructor(private wordsSelector: WordsSelectorService) {}
+    constructor(private wordsSelector: WordsSelectorService) {}
 
-  generateWords() {
-    this.wordsSelector.generateWords(this.numberOfWords);
-  }
+    generateWords() {
+        this.wordsSelector.generateWords(this.numberOfWords);
+    }
 
-  ngOnInit(): void {}
+    ngOnInit(): void {}
 }
