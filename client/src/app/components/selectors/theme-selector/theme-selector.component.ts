@@ -7,9 +7,20 @@ import { Theme } from '@app/components/selectors/theme-selector/themes';
     styleUrls: ['./theme-selector.component.scss'],
 })
 export class ThemeSelectorComponent implements OnInit {
-    static themes = Object.values(Theme);
+    themes = Object.keys(Theme).filter((theme) => {
+        return isNaN(Number(theme));
+    });
 
-    selectedTheme = [];
+    selectedThemes = new Map<string, boolean>();
 
-    ngOnInit(): void {}
+    ngOnInit(): void {
+        for (const theme of this.themes) {
+            this.selectedThemes.set(theme, false);
+        }
+    }
+
+    changeThemeStatus(theme: string) {
+        const status = this.selectedThemes.get(theme);
+        this.selectedThemes.set(theme, !status);
+    }
 }
