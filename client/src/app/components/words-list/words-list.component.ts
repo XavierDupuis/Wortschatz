@@ -36,7 +36,7 @@ export class WordsListComponent implements OnInit {
     correctWords() {
         this.score = 0;
         this.wordsGuessed.forEach((guess, word) => {
-            if (word.targetWord === guess) {
+            if (word.targetWord.toLowerCase() === guess.toLowerCase()) {
                 this.score++;
             }
         });

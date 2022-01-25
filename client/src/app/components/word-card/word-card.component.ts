@@ -22,7 +22,7 @@ export class WordCardComponent {
     }
 
     isGuessCorrect(): boolean {
-        return this.targetWord === this.guessedWord;
+        return this.targetWord.toLowerCase() === this.guessedWord.toLowerCase();
     }
 
     getClassName(): string {
