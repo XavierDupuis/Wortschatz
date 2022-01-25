@@ -11,6 +11,9 @@ export class WordsListComponent implements OnInit {
     score: number = 0;
     graded: boolean = false;
     wordsGuessed: Map<WordTarget, string> = new Map();
+    currentShownWordIndex: number = 0;
+    areAllWordsShown: boolean = true;
+
 
     constructor(private wordsSelector: WordsSelectorService) {
         this.wordsSelector.$newWordsGenerated.subscribe(() => {
@@ -21,6 +24,8 @@ export class WordsListComponent implements OnInit {
     reset() {
         this.graded = false;
         this.wordsGuessed = new Map();
+        this.currentShownWordIndex = 0;
+        this.areAllWordsShown = true;
     }
 
     get words(): WordTarget[] {
@@ -41,6 +46,7 @@ export class WordsListComponent implements OnInit {
             }
         });
         this.graded = true;
+        this.areAllWordsShown = true;
     }
 
     updateGuess(word: WordTarget, newGuess: WordGuess) {
@@ -49,4 +55,26 @@ export class WordsListComponent implements OnInit {
         }
         this.wordsGuessed.set(word, newGuess.guessedWord);
     }
+
+    isWordShown(wordIndex: number) {
+        if (this.areAllWordsShown) {
+            return true;
+        }
+        return this.currentShownWordIndex === wordIndex;
+    }
+
+    goLeft() {
+        if (this.currentShownWordIndex === 0) {
+            return;
+        }
+        this.currentShownWordIndex--;
+    }
+
+    goRight() {
+        if (this.currentShownWordIndex === this.words.length) {
+            return;
+        }
+        this.currentShownWordIndex++;
+    }
+
 }

@@ -1,10 +1,15 @@
-<div class="cards">
-    <app-word-card
-        *ngFor="let word of words"
-        [originalWord]="word.originalWord"
-        [targetWord]="this.graded ? word.targetWord : ''"
-        (guessedWordChange)="this.updateGuess(word, $event)"
-    ></app-word-card>
+<mat-slide-toggle [(ngModel)]="areAllWordsShown">Show All</mat-slide-toggle>
+<button mat-button (click)="this.goLeft()" [disabled]="areAllWordsShown">Left</button>
+<button mat-button (click)="this.goRight()" [disabled]="areAllWordsShown">Right</button>
+<div class="cards-container">
+    <div class="card" *ngFor="let word of words; let wordIndex = index">
+        <app-word-card
+            *ngIf="isWordShown(wordIndex)"
+            [originalWord]="wordIndex + word.originalWord"
+            [targetWord]="this.graded ? word.targetWord : ''"
+            (guessedWordChange)="this.updateGuess(word, $event)"
+        ></app-word-card>
+    </div>
 </div>
 <button mat-button (click)="this.correctWords()">Grade</button>
 <p *ngIf="this.graded">{{ (this.score / this.words.length) * 100 | number: '.0-0' }} %</p>
