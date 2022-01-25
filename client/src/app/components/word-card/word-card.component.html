@@ -1,3 +1,9 @@
-<p>{{ originalWord }}</p>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+<div>{{ originalWord }}</div>
 <input [(ngModel)]="this.guessedWord" (change)="this.sendGuess()" [ngClass]="this.getClassName()" />
-<p *ngIf="!this.isGuessCorrect()">{{ targetWord }}</p>
+<div *ngIf="this.isGraded()">
+    <div *ngIf="!this.isGuessCorrect(); else empty_space">{{ targetWord }}</div>
+    <ng-template #empty_space>
+        <mat-icon>check_circle_outline</mat-icon>
+    </ng-template>
+</div>

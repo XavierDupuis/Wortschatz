@@ -143,7 +143,7 @@ export const words: Word[] = [
     },
     {
         en: 'Bright',
-        fr: 'Brillan',
+        fr: 'Brillant',
         de: 'Hell',
         themes: [Theme.Adjectives],
     },

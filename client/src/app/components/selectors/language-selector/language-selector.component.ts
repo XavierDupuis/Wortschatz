@@ -10,12 +10,14 @@ import { WordsSelectorService } from '@app/services/words-selector/words-selecto
 export class LanguageSelectorComponent implements OnInit {
     languages = Object.values(Language);
 
-    set originLanguage(newLaguage: Language) {
-        this.wordsSelector.originLanguage = newLaguage;
+    set originLanguage(newLanguage: Language) {
+        this.wordsSelector.originLanguage = newLanguage;
+        this.wordsSelector.reset();
     }
 
-    set targetLanguage(newLaguage: Language) {
-        this.wordsSelector.targetLanguage = newLaguage;
+    set targetLanguage(newLanguage: Language) {
+        this.wordsSelector.targetLanguage = newLanguage;
+        this.wordsSelector.reset();
     }
 
     get originLanguage() {
