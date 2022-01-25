@@ -1,6 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { WordGuess, WordTarget } from '@app/components/word.interface';
 import { WordsSelectorService } from '@app/services/words-selector/words-selector.service';
+
+export enum Key {
+    ArrowUp = 'ArrowUp',
+    ArrowDown = 'ArrowDown',
+    Enter = 'Enter'
+}
 
 @Component({
     selector: 'app-words-list',
@@ -14,6 +20,20 @@ export class WordsListComponent implements OnInit {
     currentShownWordIndex: number = 0;
     areAllWordsShown: boolean = true;
 
+    @HostListener('window:keydown', ['$event'])
+    keyDown(event: KeyboardEvent) {
+        switch (event.key) {
+            case Key.ArrowUp:
+                this.goPrevious();
+                break;
+            case Key.ArrowDown:
+            case Key.Enter:
+                this.goNext();
+                break;
+            default:
+                break;
+        }
+    }
 
     constructor(private wordsSelector: WordsSelectorService) {
         this.wordsSelector.$newWordsGenerated.subscribe(() => {
@@ -63,18 +83,25 @@ export class WordsListComponent implements OnInit {
         return this.currentShownWordIndex === wordIndex;
     }
 
-    goLeft() {
-        if (this.currentShownWordIndex === 0) {
+    canGoPrevious() {
+        return this.currentShownWordIndex > 0 && !this.areAllWordsShown;
+    }
+
+    canGoNext() {
+        return this.currentShownWordIndex < this.words.length - 1 && !this.areAllWordsShown;
+    }
+
+    goPrevious() {
+        if (!this.canGoPrevious()) {
             return;
         }
         this.currentShownWordIndex--;
     }
 
-    goRight() {
-        if (this.currentShownWordIndex === this.words.length) {
+    goNext() {
+        if (!this.canGoNext()) {
             return;
         }
         this.currentShownWordIndex++;
     }
-
 }

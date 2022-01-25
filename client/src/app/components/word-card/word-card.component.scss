@@ -3,7 +3,7 @@
     padding: 1%;
     margin: 1%;
     border: 1px solid gray;
-    justify-content: space-between;
+    justify-content: space-evenly;
     align-items: center;
 }
 
@@ -17,4 +17,8 @@
 
 div {
     flex-basis: 20%;
+}
+
+input {
+    flex-basis: 50%;
 }

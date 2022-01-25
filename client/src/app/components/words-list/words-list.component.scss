@@ -1,3 +1,7 @@
+.cards-nav-container {
+    display: grid;
+}
+
 .cards-container {
     display: flex;
     flex-wrap: wrap;
@@ -6,5 +10,10 @@
 }
 
 .card {
-    flex-basis: 40%;
+    flex-basis: 80%;
+}
+
+.options {
+    display: grid;
+    justify-items: center;
 }

@@ -1,4 +1,3 @@
-<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
 <div>{{ originalWord }}</div>
 <input [(ngModel)]="this.guessedWord" (change)="this.sendGuess()" [ngClass]="this.getClassName()" />
 <div *ngIf="this.isGraded()">
