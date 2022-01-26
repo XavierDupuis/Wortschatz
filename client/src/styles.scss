@@ -22,7 +22,6 @@ $project-theme: mat.define-light-theme(
 // emit any typography styles.
 @include mat.button-theme($project-theme);
 @include mat.all-component-themes($project-theme);
-
 // @use '@angular/material' as mat;
 
 // @include mat.core();
