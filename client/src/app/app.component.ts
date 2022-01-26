@@ -9,6 +9,10 @@ export class AppComponent {
     currentTheme = 'dark-theme';
 
     togglePageTheme() {
-        this.currentTheme = this.currentTheme === 'dark-theme' ? 'light-theme' : 'dark-theme';
+        this.currentTheme = this.isCurrentThemeDark() ? 'light-theme' : 'dark-theme';
+    }
+
+    isCurrentThemeDark() {
+        return this.currentTheme === 'dark-theme';
     }
 }
