@@ -25,14 +25,13 @@ $mat-primary-palette: mat-palette($mat-primary-scheme);
 $mat-accent-palette: mat-palette($mat-accent-scheme);
 
 $app-light-theme: mat-light-theme($mat-primary-palette, $mat-accent-palette);
-
 .light-theme {
     @include angular-material-theme($app-light-theme);
-    background-color: rgb(255, 254, 194);
+    background-color: #f8faff;
+    color: rgb(53, 0, 102);
 }
 
 $app-dark-theme: mat-dark-theme($mat-primary-palette, $mat-accent-palette);
-
 .dark-theme {
     @include angular-material-theme($app-dark-theme);
 

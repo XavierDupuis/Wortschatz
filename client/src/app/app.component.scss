@@ -1,11 +1,18 @@
 .selectors {
-    border: 2px solid blue;
+    background-color: rgba(4, 0, 255, 0.075);
     padding: 0 2% 0 2%;
 }
 
-.page {
-    margin: 0 25% 0 25%;
-    padding: 1% 0 0 0;
+@media only screen and (max-width: 900px) {
+    .page {
+        padding: 2% 2% 0 2%;
+    }
+}
+
+@media only screen and (min-width: 900px) {
+    .page {
+        padding: 2% 25% 0 25%;
+    }
 }
 
 .theme-selector {
