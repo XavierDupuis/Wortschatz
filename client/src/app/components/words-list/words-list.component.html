@@ -16,7 +16,8 @@
                 *ngIf="isWordShown(wordIndex)"
                 [originalWord]="word.originalWord"
                 [targetWord]="graded ? word.targetWord : ''"
-                (guessedWordChange)="updateGuess(word, $event)"
+                [guessedWord]="getGuess(word)"
+                (guessedWordChange)="changeGuess(word, $event)"
             ></app-word-card>
         </div>
     </div>

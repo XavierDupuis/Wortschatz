@@ -16,9 +16,15 @@ export enum Key {
 export class WordsListComponent implements OnInit {
     score: number = 0;
     graded: boolean = false;
-    wordsGuessed: Map<WordTarget, string> = new Map();
+    wordsGuesses: Map<WordTarget, string> = new Map();
     currentShownWordIndex: number = 0;
     areAllWordsShown: boolean = true;
+
+    constructor(private wordsSelector: WordsSelectorService) {
+        this.wordsSelector.$newWordsGenerated.subscribe(() => {
+            this.reset();
+        });
+    }
 
     @HostListener('window:keydown', ['$event'])
     keyDown(event: KeyboardEvent) {
@@ -35,15 +41,9 @@ export class WordsListComponent implements OnInit {
         }
     }
 
-    constructor(private wordsSelector: WordsSelectorService) {
-        this.wordsSelector.$newWordsGenerated.subscribe(() => {
-            this.reset();
-        });
-    }
-
     reset() {
         this.graded = false;
-        this.wordsGuessed = new Map();
+        this.wordsGuesses = new Map();
         this.currentShownWordIndex = 0;
         this.areAllWordsShown = true;
     }
@@ -54,13 +54,13 @@ export class WordsListComponent implements OnInit {
 
     ngOnInit(): void {
         for (const word of this.words) {
-            this.wordsGuessed.set(word, '');
+            this.wordsGuesses.set(word, '');
         }
     }
 
     correctWords() {
         this.score = 0;
-        this.wordsGuessed.forEach((guess, word) => {
+        this.wordsGuesses.forEach((guess, word) => {
             if (word.targetWord.toLowerCase() === guess.toLowerCase()) {
                 this.score++;
             }
@@ -69,11 +69,19 @@ export class WordsListComponent implements OnInit {
         this.areAllWordsShown = true;
     }
 
-    updateGuess(word: WordTarget, newGuess: WordGuess) {
+    changeGuess(word: WordTarget, newGuess: WordGuess) {
         if (this.graded) {
             return;
         }
-        this.wordsGuessed.set(word, newGuess.guessedWord);
+        this.wordsGuesses.set(word, newGuess.guessedWord);
+    }
+
+    getGuess(word: WordTarget) {
+        const currentGuess = this.wordsGuesses.get(word);
+        if (!currentGuess) {
+            return '';
+        }
+        return currentGuess;
     }
 
     isWordShown(wordIndex: number) {

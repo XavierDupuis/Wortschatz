@@ -8,9 +8,9 @@ import { WordGuess } from '@app/components/word.interface';
 })
 export class WordCardComponent {
     @Input() originalWord!: string;
+    @Input() guessedWord!: string;
     @Input() targetWord: string;
     @Output() guessedWordChange = new EventEmitter<WordGuess>();
-    guessedWord: string = '';
 
     sendGuess() {
         const wordGuess: WordGuess = { originalWord: this.originalWord, guessedWord: this.guessedWord };
