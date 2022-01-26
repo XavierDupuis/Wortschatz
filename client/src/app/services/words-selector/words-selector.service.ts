@@ -15,7 +15,11 @@ export class WordsSelectorService {
     selectedWords: WordTarget[] = [];
     availableWordsIndex: number[] = [];
 
-    selectedThemes = new Set<string>();
+    selectedThemes = new Set<string>(
+        Object.keys(Theme).filter((theme) => {
+            return isNaN(Number(theme));
+        }),
+    );
 
     newWordsGeneratedSubject = new Subject();
     get $newWordsGenerated() {
