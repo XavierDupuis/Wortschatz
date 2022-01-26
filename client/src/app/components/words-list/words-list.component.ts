@@ -5,7 +5,7 @@ import { WordsSelectorService } from '@app/services/words-selector/words-selecto
 export enum Key {
     ArrowUp = 'ArrowUp',
     ArrowDown = 'ArrowDown',
-    Enter = 'Enter'
+    Enter = 'Enter',
 }
 
 @Component({

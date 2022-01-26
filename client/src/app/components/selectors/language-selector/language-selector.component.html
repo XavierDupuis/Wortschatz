@@ -1,14 +1,21 @@
-<h2>From</h2>
-<mat-form-field appearance="fill">
-    <mat-label>Original Language</mat-label>
-    <mat-select [(value)]="this.originLanguage">
-        <mat-option *ngFor="let language of this.languages" [value]="language"> {{ language }} </mat-option>
-    </mat-select>
-</mat-form-field>
-<h2>to</h2>
-<mat-form-field appearance="fill">
-    <mat-label>Target Language</mat-label>
-    <mat-select [(value)]="this.targetLanguage">
-        <mat-option *ngFor="let language of this.languages" [value]="language"> {{ language }} </mat-option>
-    </mat-select>
-</mat-form-field>
+<h2>Languages</h2>
+<div class="parameters-container">
+    <div class="parameter">
+        <h3>From</h3>
+        <mat-form-field appearance="fill">
+            <mat-label>Original Language</mat-label>
+            <mat-select [(value)]="this.originLanguage">
+                <mat-option *ngFor="let language of this.languages" [value]="language"> {{ language }} </mat-option>
+            </mat-select>
+        </mat-form-field>
+    </div>
+    <div class="parameter">
+        <h3>to</h3>
+        <mat-form-field appearance="fill">
+            <mat-label>Target Language</mat-label>
+            <mat-select [(value)]="this.targetLanguage">
+                <mat-option *ngFor="let language of this.languages" [value]="language"> {{ language }} </mat-option>
+            </mat-select>
+        </mat-form-field>
+    </div>
+</div>

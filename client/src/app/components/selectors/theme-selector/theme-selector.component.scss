@@ -1,4 +1,15 @@
 .themes {
     display: flex;
-    justify-content: space-evenly;
+    flex-wrap: wrap;
+}
+
+mat-checkbox {
+    flex-basis: 25%;
+    text-align: left;
+    padding-left: 4%;
+}
+
+.parent-checkbox {
+    font-weight: bolder;
+    padding-left: 2%;
 }

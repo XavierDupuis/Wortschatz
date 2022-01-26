@@ -1,3 +1,11 @@
-:host {
-    display: inline-flex;
+.parameter,
+.parameters-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    flex-basis: 40%;
+}
+
+h3 {
+    padding: 0 5% 0 5%;
 }

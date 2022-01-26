@@ -1,5 +1,7 @@
 <h2>Themes</h2>
-<mat-checkbox (change)="toggleAllThemesStatus()" [indeterminate]="areSomeStatusActive()" [checked]="areAllThemesSelected()"> All </mat-checkbox>
+<mat-checkbox class="parent-checkbox" (change)="toggleAllThemesStatus()" [indeterminate]="areSomeStatusActive()" [checked]="areAllThemesSelected()">
+    All
+</mat-checkbox>
 <div class="themes">
     <mat-checkbox *ngFor="let theme of themes" (change)="changeThemeStatus(theme)" [checked]="isThemeActive(theme)"> {{ theme }} </mat-checkbox>
 </div>
