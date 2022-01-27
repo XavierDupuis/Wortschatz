@@ -1,30 +1,6 @@
 @use '~@angular/material' as mat;
-// @use './app/components/word-card/word-card.component.scss' as card;
 @import '~@angular/material/theming';
 @include mat-core();
-
-// $mat-primary-scheme: (
-//     100: #c5cae9,
-//     500: #61699a,
-//     700: #303f9f,
-//     contrast: (
-//         100: rgba(0, 0, 0, 0.87),
-//         500: #ffffff,
-//         700: #ffffff,
-//     ),
-// );
-// $mat-accent-scheme: (
-//     100: #ff80ab,
-//     500: #ff4081,
-//     700: #f50057,
-//     contrast: (
-//         100: rgba(0, 0, 0, 0.87),
-//         500: rgba(0, 0, 0, 0.87),
-//         700: #ffffff,
-//     ),
-// );
-// $mat-primary-palette: mat-palette($mat-primary-scheme);
-// $mat-accent-palette: mat-palette($mat-accent-scheme);
 
 $light-primary-palette: mat.$purple-palette;
 $light-accent-palette: mat.define-palette(mat.$green-palette, A200, A100, A400);
@@ -35,27 +11,23 @@ $dark-warn-palette: mat.define-palette(mat.$light-green-palette, A700, A600, A90
 
 $app-light-theme: mat-light-theme($light-primary-palette, $light-accent-palette, $light-warn-palette);
 .light-theme {
-    @include angular-material-theme($app-light-theme);
-    // @include mat.all-component-themes($app-light-theme);
-    // @include card.color($app-light-theme);
+    @include mat.all-component-themes($app-light-theme);
     background-color: #f8faff;
     color: rgb(53, 0, 102);
 }
 
 $app-dark-theme: mat-dark-theme($dark-primary-palette, $dark-accent-palette, $dark-warn-palette);
 .dark-theme {
-    @include angular-material-theme($app-dark-theme);
-    // @include mat.all-component-themes($app-dark-theme);
-    // @include card.color($app-dark-theme);
+    @include mat.all-component-themes($app-dark-theme);
     background-color: #333;
     color: whitesmoke;
 }
 
+@include mat.all-component-themes($app-dark-theme);
+
 * {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
         'Segoe UI Symbol';
-    // color: #333;
-    // box-sizing: border-box;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
@@ -81,13 +53,4 @@ input::-webkit-inner-spin-button {
 /* Firefox */
 input[type='number'] {
     -moz-appearance: textfield;
-}
-
-// Fix MatSelect transparent background
-.mat-select-panel {
-    background: #fff;
-}
-
-.mat-select-panel:not([class*='mat-elevation-z']) {
-    box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.2), 0 4px 5px 0 rgba(0, 0, 0, 0.14), 0 1px 10px 0 rgba(0, 0, 0, 0.12);
 }
