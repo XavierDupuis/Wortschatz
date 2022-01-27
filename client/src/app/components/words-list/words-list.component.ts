@@ -18,7 +18,7 @@ export class WordsListComponent implements OnInit {
     graded: boolean = false;
     wordsGuesses: Map<WordTarget, string> = new Map();
     currentShownWordIndex: number = 0;
-    areAllWordsShown: boolean = true;
+    areAllWordsShown: boolean = false;
 
     constructor(private wordsSelector: WordsSelectorService) {
         this.wordsSelector.$newWordsGenerated.subscribe(() => {
@@ -45,7 +45,7 @@ export class WordsListComponent implements OnInit {
         this.graded = false;
         this.wordsGuesses = new Map();
         this.currentShownWordIndex = 0;
-        this.areAllWordsShown = true;
+        this.areAllWordsShown = false;
     }
 
     get words(): WordTarget[] {

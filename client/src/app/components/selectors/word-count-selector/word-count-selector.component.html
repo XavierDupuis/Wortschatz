@@ -6,7 +6,7 @@
         [min]="minNumberOfWords"
         [max]="maxNumberOfWords"
     ></mat-slider>
-    <input type="number" [(ngModel)]="numberOfWords" [min]="minNumberOfWords" [max]="maxNumberOfWords" />
+    <input matInput type="number" [(ngModel)]="numberOfWords" [min]="minNumberOfWords" [max]="maxNumberOfWords" />
     <p>words</p>
 </div>
 <button mat-button (click)="this.generateWords()">Generate</button>

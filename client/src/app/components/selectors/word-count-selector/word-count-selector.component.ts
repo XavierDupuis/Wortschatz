@@ -3,7 +3,7 @@ import { WordsSelectorService } from '@app/services/words-selector/words-selecto
 
 const MIN_NUMBER_OF_WORDS = 0;
 const DEFAULT_NUMBER_OF_WORDS = 20;
-const MAX_NUMBER_OF_WORDS = 100;
+const MAX_NUMBER_OF_WORDS = 50;
 
 @Component({
     selector: 'app-word-count-selector',

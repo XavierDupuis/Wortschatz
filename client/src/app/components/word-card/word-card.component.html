@@ -1,5 +1,5 @@
 <div>{{ originalWord }}</div>
-<input [(ngModel)]="this.guessedWord" (change)="this.sendGuess()" [ngClass]="this.getClassName()" />
+<input class="guess-input" matInput [(ngModel)]="this.guessedWord" (change)="this.sendGuess()" [ngClass]="this.getClassName()" />
 <div *ngIf="this.isGraded()">
     <div *ngIf="!this.isGuessCorrect(); else empty_space">{{ targetWord }}</div>
     <ng-template #empty_space>

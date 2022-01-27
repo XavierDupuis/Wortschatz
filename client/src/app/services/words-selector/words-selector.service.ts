@@ -4,7 +4,7 @@ import { Theme } from '@app/components/selectors/theme-selector/themes';
 import { WordTarget } from '@app/components/word.interface';
 import { Word, words } from '@app/services/words-selector/words';
 import { getRandomInt } from '@app/utils';
-import { Subject } from 'rxjs/internal/Subject';
+import { Subject } from 'rxjs';
 
 @Injectable({
     providedIn: 'root',
