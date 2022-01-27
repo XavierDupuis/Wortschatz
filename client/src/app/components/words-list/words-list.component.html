@@ -26,6 +26,5 @@
     </button>
 </div>
 <div class="options">
-    <button mat-button *ngIf="!graded; else scoreValue" (click)="correctWords()">Grade</button>
-    <ng-template #scoreValue>{{ (score / words.length) * 100 | number: '.0-0' }} %</ng-template>
+    <button mat-button *ngIf="!graded" (click)="correctWords()">Grade</button>
 </div>

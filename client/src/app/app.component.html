@@ -1,12 +1,17 @@
 <div [class]="currentTheme">
     <div class="page">
-        <div class="theme-selector">
-            <mat-slide-toggle (click)="togglePageTheme()"></mat-slide-toggle>
-            <mat-icon *ngIf="isCurrentThemeDark(); else light_theme">dark_mode</mat-icon>
-            <ng-template #light_theme>
-                <mat-icon>light_mode</mat-icon>
-            </ng-template>
-        </div>
+        <header>
+            <div class="theme-selector">
+                <mat-slide-toggle (click)="togglePageTheme()"></mat-slide-toggle>
+                <mat-icon *ngIf="isCurrentThemeDark(); else light_theme">dark_mode</mat-icon>
+                <ng-template #light_theme>
+                    <mat-icon>light_mode</mat-icon>
+                </ng-template>
+            </div>
+            <div>
+                <mat-icon>help</mat-icon>
+            </div>
+        </header>
         <h1>Wortschatz</h1>
         <div class="selectors">
             <app-language-selector></app-language-selector>

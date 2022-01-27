@@ -15,9 +15,13 @@
     }
 }
 
+header {
+    display: flex;
+    justify-content: space-between;
+}
+
 .theme-selector {
     width: fit-content;
-    cursor: pointer;
     display: flex;
     padding-left: 1%;
 }

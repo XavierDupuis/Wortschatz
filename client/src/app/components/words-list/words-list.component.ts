@@ -1,4 +1,5 @@
 import { Component, HostListener, OnInit } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { WordGuess, WordTarget } from '@app/components/word.interface';
 import { WordsSelectorService } from '@app/services/words-selector/words-selector.service';
 
@@ -14,13 +15,13 @@ export enum Key {
     styleUrls: ['./words-list.component.scss'],
 })
 export class WordsListComponent implements OnInit {
-    score: number = 0;
+    // score: number = 0;
     graded: boolean = false;
     wordsGuesses: Map<WordTarget, string> = new Map();
     currentShownWordIndex: number = 0;
     areAllWordsShown: boolean = false;
 
-    constructor(private wordsSelector: WordsSelectorService) {
+    constructor(private wordsSelector: WordsSelectorService, private snackBar: MatSnackBar) {
         this.wordsSelector.$newWordsGenerated.subscribe(() => {
             this.reset();
         });
@@ -59,14 +60,16 @@ export class WordsListComponent implements OnInit {
     }
 
     correctWords() {
-        this.score = 0;
+        let score = 0;
         this.wordsGuesses.forEach((guess, word) => {
             if (word.targetWord.toLowerCase() === guess.toLowerCase()) {
-                this.score++;
+                score++;
             }
         });
         this.graded = true;
         this.areAllWordsShown = true;
+        const percentage = Math.round((score / this.words.length) * 100);
+        this.openSnackBar(`You got ${percentage}%  !`, 'Close');
     }
 
     changeGuess(word: WordTarget, newGuess: WordGuess) {
@@ -111,5 +114,12 @@ export class WordsListComponent implements OnInit {
             return;
         }
         this.currentShownWordIndex++;
+    }
+
+    openSnackBar(message: string, action: string) {
+        this.snackBar.open(message, action, {
+            duration: 5000,
+            verticalPosition: 'top',
+        });
     }
 }
