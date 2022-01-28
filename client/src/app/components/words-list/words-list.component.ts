@@ -15,7 +15,6 @@ export enum Key {
     styleUrls: ['./words-list.component.scss'],
 })
 export class WordsListComponent implements OnInit {
-    // score: number = 0;
     graded: boolean = false;
     wordsGuesses: Map<WordTarget, string> = new Map();
     currentShownWordIndex: number = 0;

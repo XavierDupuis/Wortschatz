@@ -10,6 +10,7 @@ import { AppMaterialModule } from '@app/modules/material.module';
 import { ThemeSelectorComponent } from './components/selectors/theme-selector/theme-selector.component';
 import { WordCountSelectorComponent } from './components/selectors/word-count-selector/word-count-selector.component';
 import { WordsListComponent } from './components/words-list/words-list.component';
+import { HelpModalComponent } from './components/help-modal/help-modal.component';
 
 @NgModule({
     declarations: [
@@ -19,6 +20,7 @@ import { WordsListComponent } from './components/words-list/words-list.component
         ThemeSelectorComponent,
         LanguageSelectorComponent,
         WordCountSelectorComponent,
+        HelpModalComponent,
     ],
     imports: [BrowserModule, AppRoutingModule, AppMaterialModule, FormsModule, BrowserAnimationsModule],
     providers: [],
