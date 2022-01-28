@@ -12,3 +12,4 @@ coverage/
 
 #Unused
 /.unused
+deploy.bat
