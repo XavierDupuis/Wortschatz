@@ -1,5 +1,8 @@
 export enum Theme {
-    Adjectives,
+    Verbs,
     Food,
     Colors,
+    House,
+    Body,
+    Family,
 }
