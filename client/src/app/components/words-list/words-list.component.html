@@ -1,13 +1,13 @@
 <div class="options">
     <mat-slide-toggle [(ngModel)]="areAllWordsShown">Show All</mat-slide-toggle>
-    <mat-progress-spinner
+    <!-- <mat-progress-spinner
         mode="determinate"
         *ngIf="!areAllWordsShown"
         [value]="(currentShownWordIndex / (words.length - 1)) * 100"
-    ></mat-progress-spinner>
+    ></mat-progress-spinner> -->
 </div>
 <div class="cards-nav-container">
-    <button mat-button (click)="goPrevious()" [disabled]="!canGoPrevious()">
+    <button mat-button (click)="goPrevious()" [disabled]="!canGoPrevious()" *ngIf="areArrowShown">
         <mat-icon>keyboard_arrow_up</mat-icon>
     </button>
     <div class="cards-container">
@@ -21,10 +21,10 @@
             ></app-word-card>
         </div>
     </div>
-    <button mat-button (click)="goNext()" [disabled]="!canGoNext()">
+    <button mat-button (click)="goNext()" [disabled]="!canGoNext()" *ngIf="areArrowShown">
         <mat-icon>keyboard_arrow_down</mat-icon>
     </button>
 </div>
-<div class="options">
-    <button mat-button *ngIf="!graded" (click)="correctWords()">Grade</button>
+<div class="options" *ngIf="words.length">
+    <button mat-raised-button color="warn" *ngIf="canGrade()" (click)="correctWords()">Grade</button>
 </div>

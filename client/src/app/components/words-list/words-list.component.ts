@@ -20,6 +20,10 @@ export class WordsListComponent implements OnInit {
     currentShownWordIndex: number = 0;
     areAllWordsShown: boolean = false;
 
+    get areArrowShown() {
+        return this.words.length && !this.areAllWordsShown;
+    }
+
     constructor(private wordsSelector: WordsSelectorService, private snackBar: MatSnackBar) {
         this.wordsSelector.$newWordsGenerated.subscribe(() => {
             this.reset();
@@ -91,6 +95,10 @@ export class WordsListComponent implements OnInit {
             return true;
         }
         return this.currentShownWordIndex === wordIndex;
+    }
+
+    canGrade() {
+        return !this.graded && this.words.length;
     }
 
     canGoPrevious() {

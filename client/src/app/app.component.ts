@@ -12,13 +12,7 @@ export class AppComponent {
     constructor(public dialog: MatDialog) {}
 
     openHelp(): void {
-        // const dialogRef =
-        this.dialog.open(HelpModalComponent, {
-            width: '250px',
-            data: { name: 'this.name, animal: this.animal' },
-        });
-
-        // dialogRef.afterClosed().subscribe(() => {});
+        this.dialog.open(HelpModalComponent);
     }
 
     togglePageTheme() {

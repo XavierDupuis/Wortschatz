@@ -9,7 +9,7 @@ import { MatDialogRef } from '@angular/material/dialog';
 export class HelpModalComponent {
     constructor(public dialogRef: MatDialogRef<HelpModalComponent>) {}
 
-    onNoClick(): void {
+    close(): void {
         this.dialogRef.close();
     }
 }

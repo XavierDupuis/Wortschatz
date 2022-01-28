@@ -60,7 +60,7 @@ export const words: Word[] = [
     { en: 'Grandfather', fr: 'Grand-Père ', de: 'Großvater', themes: [Theme.Family] },
     { en: 'Nephew', fr: 'Neveu ', de: 'Neffe', themes: [Theme.Family] },
     { en: 'Uncle', fr: 'Oncle ', de: 'Onkel', themes: [Theme.Family] },
-    { en: 'Dad', fr: 'Père', de: 'Vati', themes: [Theme.Family] },
+    { en: 'Dad', fr: 'Père', de: 'Vater', themes: [Theme.Family] },
     { en: 'Grandson', fr: 'Petit-Fils ', de: 'Enkel', themes: [Theme.Family] },
     { en: 'Cousin', fr: 'Cousine', de: 'Vetter', themes: [Theme.Family] },
     { en: 'Spouse', fr: 'Épouse', de: 'Ehepartner', themes: [Theme.Family] },

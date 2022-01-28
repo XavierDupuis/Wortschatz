@@ -9,4 +9,4 @@
     <input matInput type="number" [(ngModel)]="numberOfWords" [min]="minNumberOfWords" [max]="maxNumberOfWords" />
     <p>words</p>
 </div>
-<button mat-button (click)="this.generateWords()">Generate</button>
+<button mat-raised-button color="warn" (click)="this.generateWords()">Generate</button>
