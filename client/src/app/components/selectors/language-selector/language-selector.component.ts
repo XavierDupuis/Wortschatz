@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Language } from '@app/components/selectors/language-selector/languages';
 import { WordsSelectorService } from '@app/services/words-selector/words-selector.service';
 
@@ -8,6 +8,7 @@ import { WordsSelectorService } from '@app/services/words-selector/words-selecto
     styleUrls: ['./language-selector.component.scss'],
 })
 export class LanguageSelectorComponent implements OnInit {
+    @Input() currentTheme: string;
     languages = Object.values(Language);
 
     set originLanguage(newLanguage: Language) {

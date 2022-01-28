@@ -5,7 +5,7 @@
         <mat-form-field appearance="fill">
             <mat-label>Original Language</mat-label>
             <mat-select [(value)]="this.originLanguage">
-                <mat-option *ngFor="let language of this.languages" [value]="language"> {{ language }} </mat-option>
+                <mat-option [class]="currentTheme" *ngFor="let language of this.languages" [value]="language"> {{ language }} </mat-option>
             </mat-select>
         </mat-form-field>
     </div>
@@ -14,7 +14,7 @@
         <mat-form-field appearance="fill">
             <mat-label>Target Language</mat-label>
             <mat-select [(value)]="this.targetLanguage">
-                <mat-option *ngFor="let language of this.languages" [value]="language"> {{ language }} </mat-option>
+                <mat-option [class]="currentTheme" *ngFor="let language of this.languages" [value]="language"> {{ language }} </mat-option>
             </mat-select>
         </mat-form-field>
     </div>

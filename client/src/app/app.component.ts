@@ -12,7 +12,9 @@ export class AppComponent {
     constructor(public dialog: MatDialog) {}
 
     openHelp(): void {
-        this.dialog.open(HelpModalComponent);
+        this.dialog.open(HelpModalComponent, {
+            panelClass: this.currentTheme,
+        });
     }
 
     togglePageTheme() {

@@ -23,7 +23,7 @@ $app-dark-theme: mat-dark-theme($dark-primary-palette, $dark-accent-palette, $da
     color: whitesmoke;
 }
 
-@include mat.all-component-themes($app-dark-theme);
+// @include mat.all-component-themes($app-dark-theme);
 
 * {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
