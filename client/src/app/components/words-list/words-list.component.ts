@@ -1,4 +1,4 @@
-import { Component, HostListener, OnInit } from '@angular/core';
+import { Component, HostListener, Input, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { WordGuess, WordTarget } from '@app/components/word.interface';
 import { WordsSelectorService } from '@app/services/words-selector/words-selector.service';
@@ -15,6 +15,7 @@ export enum Key {
     styleUrls: ['./words-list.component.scss'],
 })
 export class WordsListComponent implements OnInit {
+    @Input() currentTheme: string;
     graded: boolean = false;
     wordsGuesses: Map<WordTarget, string> = new Map();
     currentShownWordIndex: number = 0;
@@ -127,6 +128,7 @@ export class WordsListComponent implements OnInit {
         this.snackBar.open(message, action, {
             duration: 5000,
             verticalPosition: 'top',
+            panelClass: this.currentTheme,
         });
     }
 }
