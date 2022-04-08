@@ -74,6 +74,8 @@ export class WordsSelectorService {
                 return word.en;
             case Language.De:
                 return word.de;
+            case Language.Sv:
+                return word.sv;
             default:
                 throw Error('Language ' + language + ' not supported');
         }
