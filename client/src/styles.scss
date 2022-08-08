@@ -54,3 +54,8 @@ input::-webkit-inner-spin-button {
 input[type='number'] {
     -moz-appearance: textfield;
 }
+
+app-root {
+    height: 100vh;
+    display: grid;
+}
